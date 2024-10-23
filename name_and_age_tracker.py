@@ -1,25 +1,26 @@
-#Ask user for name and age input
-#Set a definition for the name and age input
-#Have a loop for re-entry of name and age
-#Have an array to collect the infomation given by the user
-#Compose an array to find the oldest user/highest age
+
 
 user_information = {}
 collection_information = []   
 retry = True
 
+#Ask user for name and age input
 while retry:
+#Have a loop for re-entry of name and age
+ #Set a definition for the name and age input, for name characters only 
     try:
-        name = input("Please input your here, letters only: ")
+        name = input("Please input your first name here, letters only: ")
         if not name.isalpha():
             raise ValueError("That's wrong! Letters only please.")
+#For age, ages 1 to 120 only
         age = int(input("Please input your age here: "))
         if age < 1 or age > 120:
-            raise ValueError("That's wrong! Numbers only and it should be from 1 to 120 years of age.")
+            raise ValueError("That's wrong! Numbers only and it should be from 1 to 120 years of age.") 
         user_information = {
             "name": name,
             "age": age
         }
+    #Have an array to collect the infomation given by the user
         collection_information.append(user_information)
     except ValueError as value_error:
         print(value_error)
@@ -41,13 +42,14 @@ while retry:
         except Exception as exception:
             print(exception)
 
-
+#Compose an array to find the oldest user/highest age
 age = []
 for user in collection_information:
     age.append(user["age"]) 
 
 max_age = max(age)
 
+#After finding the max age or the highest number, use it to find the name of the user who its equall to
 oldest_user = []
 for user in collection_information:
     if user["age"] == max_age:
