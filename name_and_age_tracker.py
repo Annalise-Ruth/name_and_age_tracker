@@ -2,15 +2,15 @@
 #Set a definition for the name and age input
 #Have a loop for re-entry of name and age
 #Have an array to collect the infomation given by the user
-#Compose a 
+#Compose an array to find the oldest user/highest age
 
 user_information = {}
-collection_information = []
+collection_information = []   
 retry = True
 
 while retry:
     try:
-        name = input("Please input your name here, letters only: ")
+        name = input("Please input your here, letters only: ")
         if not name.isalpha():
             raise ValueError("That's wrong! Letters only please.")
         age = int(input("Please input your age here: "))
@@ -42,4 +42,17 @@ while retry:
             print(exception)
 
 
-print(collection_information)
+age = []
+for user in collection_information:
+    age.append(user["age"]) 
+
+max_age = max(age)
+
+oldest_user = []
+for user in collection_information:
+    if user["age"] == max_age:
+        oldest_user.append(user["name"])
+
+for name in oldest_user:
+    print(name)
+
